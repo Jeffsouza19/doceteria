@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CandyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/', [CandyController::class, 'index' ]);
+Route::post('/candy', [CandyController::class, 'store' ]);
+Route::get('/candy/{id}', [CandyController::class, 'show' ]);
+Route::put('/candy/{id}', [CandyController::class, 'update' ]);
+Route::delete('/candy/{id}', [CandyController::class, 'destroy' ]);

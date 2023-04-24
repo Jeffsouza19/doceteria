@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Candy;
+use App\Models\Ingredient;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,13 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('candies_ingredients', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignIdFor(Candy::class)->references('id')->on('candies');
+            $table->foreignIdFor(Ingredient::class)->references('id')->on('ingredients');
+            $table->float('ing_amount');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('candies_ingredients');
     }
 };
