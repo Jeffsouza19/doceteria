@@ -15,4 +15,9 @@ class Candy extends Model
         'candy_name',
         'amount'
     ];
+
+    public function candyIngredients()
+    {
+        return $this->hasMany(CandiesIngredients::class);
+    }
 }

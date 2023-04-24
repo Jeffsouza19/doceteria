@@ -11,4 +11,19 @@ class CandiesIngredients extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'candies_ingredients';
+    protected $fillable = [
+        'candy_id',
+        'ingredient_id',
+        'ing_amount'
+    ];
+
+    public function candy()
+    {
+        return $this->belongsTo(Candy::class);
+    }
+
+    public function ingredient()
+    {
+        return $this->belongsTo(Ingredient::class);
+    }
 }

@@ -19,6 +19,10 @@ class CandyController extends Controller
         $per_page = isset($per_page['per_page'])? $per_page['per_page'] :'';
         $candies = $srv_candy->getAll($per_page);
 
+        if(!$candies){
+            return new JsonResponse(['data' => 'Não existe doces cadastrados'], 200);
+        }
+
         return CandyResource::collection($candies);
     }
 
