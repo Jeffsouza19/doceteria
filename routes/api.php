@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CandyController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,8 @@ Route::post('/candy', [CandyController::class, 'store' ]);
 Route::get('/candy/{id}', [CandyController::class, 'show' ]);
 Route::put('/candy/{id}', [CandyController::class, 'update' ]);
 Route::delete('/candy/{id}', [CandyController::class, 'destroy' ]);
+
+
+Route::controller(AuthController::class)->prefix('auth')->group(function(){
+    Route::post('/register', 'register');
+});
