@@ -1,0 +1,117 @@
+name: 'Auth Managent'
+description: |-
+
+  APIs to manage the Auth resource
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/register
+    metadata:
+      groupName: 'Auth Managent'
+      groupDescription: |-
+
+        APIs to manage the Auth resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: ab
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: morton62@example.net
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: PZYQ7mM
+        type: string
+        custom: []
+      password_confirm:
+        name: password_confirm
+        description: 'The value and <code>password</code> must match.'
+        required: true
+        example: et
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: ab
+      email: morton62@example.net
+      password: PZYQ7mM
+      password_confirm: et
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/signin
+    metadata:
+      groupName: 'Auth Managent'
+      groupDescription: |-
+
+        APIs to manage the Auth resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: schaden.athena@example.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: nam
+        type: string
+        custom: []
+    cleanBodyParameters:
+      email: schaden.athena@example.com
+      password: nam
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

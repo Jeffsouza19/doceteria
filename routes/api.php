@@ -19,14 +19,16 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
-Route::get('/', [CandyController::class, 'index' ]);
-Route::post('/candy', [CandyController::class, 'store' ]);
-Route::get('/candy/{id}', [CandyController::class, 'show' ]);
-Route::put('/candy/{id}', [CandyController::class, 'update' ]);
-Route::delete('/candy/{id}', [CandyController::class, 'destroy' ]);
+Route::controller(CandyController::class)->prefix('candy')->group(function(){
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/{id}', 'show');
+    Route::put('/{id}', 'update');
+    Route::delete('/{id}', 'destroy');
+});
 
 
 Route::controller(AuthController::class)->prefix('auth')->group(function(){
     Route::post('/register', 'register');
+    Route::post('/signin', 'login');
 });

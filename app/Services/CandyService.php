@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\GeneralJsonException;
 use App\Repositories\Interfaces\CandyRepository;
 
 class CandyService
@@ -32,6 +33,8 @@ class CandyService
 
     public function store(array $data)
     {
+        throw_if(!isset($data['candy_name']) || !isset($data['amount']), GeneralJsonException::class, 'Favor preencher todos dados');
+
         return $this->repo->store($data);
     }
 

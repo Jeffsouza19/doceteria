@@ -1,0 +1,254 @@
+name: 'Candy Managent'
+description: |-
+
+  APIs to manage the cnady resource
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/candy
+    metadata:
+      groupName: 'Candy Managent'
+      groupDescription: |-
+
+        APIs to manage the cnady resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of candies.'
+      description: 'Get a list of candies.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page. Defaults to 15.'
+        required: false
+        example: 18
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'Page to view.'
+        required: false
+        example: 18
+        type: integer
+        custom: []
+    cleanQueryParameters:
+      per_page: 18
+      page: 18
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[],"links":{"first":"http:\/\/localhost\/api\/candy?page=1","last":"http:\/\/localhost\/api\/candy?page=1","prev":"http:\/\/localhost\/api\/candy?page=17","next":null},"meta":{"current_page":18,"from":null,"last_page":1,"links":[{"url":"http:\/\/localhost\/api\/candy?page=17","label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost\/api\/candy?page=1","label":"1","active":false},{"url":null,"label":"Next &raquo;","active":false}],"path":"http:\/\/localhost\/api\/candy","per_page":18,"to":null,"total":2}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/candy
+    metadata:
+      groupName: 'Candy Managent'
+      groupDescription: |-
+
+        APIs to manage the cnady resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: 'Só um teste qualquer'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      candy_name:
+        name: candy_name
+        description: ''
+        required: true
+        example: enim
+        type: string
+        custom: []
+      amount:
+        name: amount
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      candy_name: enim
+      amount: 6
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/candy/{id}'
+    metadata:
+      groupName: 'Candy Managent'
+      groupDescription: |-
+
+        APIs to manage the cnady resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified Candy.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'Candy ID'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 3
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":1,"candy":"Red Velvet","amount":50,"created_at":"2023-04-26T13:03:39.000000Z","updated_at":"2023-04-26T13:03:39.000000Z"}}'
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/candy/{id}'
+    metadata:
+      groupName: 'Candy Managent'
+      groupDescription: |-
+
+        APIs to manage the cnady resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the candy.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      candy_name:
+        name: candy_name
+        description: ''
+        required: false
+        example: voluptates
+        type: string
+        custom: []
+      amount:
+        name: amount
+        description: ''
+        required: false
+        example: 2
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      candy_name: voluptates
+      amount: 2
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/candy/{id}'
+    metadata:
+      groupName: 'Candy Managent'
+      groupDescription: |-
+
+        APIs to manage the cnady resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the candy.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

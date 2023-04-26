@@ -3,15 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CandyRequest;
 use App\Http\Resources\CandyResource;
 use App\Services\CandyService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+
+/**
+ * @group Candy Managent
+ *
+ * APIs to manage the cnady resource
+ */
+
 class CandyController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of candies.
+     *
+     * Get a list of candies.
+     *
+     * @queryParam per_page int Size per page. Defaults to 15.
+     * @queryParam page int Page to view.
+     *
      */
     public function index(CandyService $srv_candy, Request $request)
     {
@@ -28,8 +42,13 @@ class CandyController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * Só um teste qualquer
+     *
+     * @bodyParam candy_name string required
+     * @bodyParam amount int required
      */
-    public function store(Request $request, CandyService $srv_candy)
+    public function store(CandyRequest $request, CandyService $srv_candy)
     {
         $candy = $srv_candy->store($request->only('candy_name', 'amount'));
 
@@ -37,7 +56,13 @@ class CandyController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Candy.
+     *
+     * @urlParam id int required Candy ID
+     * @apiResource App\Http\Resources\CandyResource
+     * @apiResourceModel App\Models\Candy
+     *
+     * @return CandyResource
      */
     public function show(string $id, CandyService $srv_candy)
     {
@@ -48,7 +73,7 @@ class CandyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id, CandyService $srv_candy)
+    public function update(CandyRequest $request, string $id, CandyService $srv_candy)
     {
         $srv_candy->update($id, $request->all());
 
