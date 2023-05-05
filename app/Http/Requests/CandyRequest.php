@@ -22,7 +22,7 @@ class CandyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'candy_name' => 'string',
+            'candy_name' => 'string|required',
             'amount' => 'integer'
         ];
     }
