@@ -26,19 +26,19 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: lori.morar@example.com
+        example: buckridge.monty@example.org
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: 'sUY2!&<'
+        example: 'I)NX#8/bum}'
         type: string
         custom: []
     cleanBodyParameters:
-      email: lori.morar@example.com
-      password: 'sUY2!&<'
+      email: buckridge.monty@example.org
+      password: 'I)NX#8/bum}'
     fileParameters: []
     responses: []
     responseFields: []
@@ -132,19 +132,19 @@ endpoints:
         name: token
         description: ''
         required: true
-        example: eius
+        example: et
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: porro
+        example: enim
         type: string
         custom: []
     cleanBodyParameters:
-      token: eius
-      password: porro
+      token: et
+      password: enim
     fileParameters: []
     responses: []
     responseFields: []
@@ -185,28 +185,54 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - PUT
-    uri: api/user/profile-information
+      - GET
+    uri: 'api/email/verify/{id}/{hash}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: "Update the user's profile information."
+      title: "Mark the authenticated user's email address as verified."
       description: ''
       authenticated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the verify.'
+        required: true
+        example: sint
+        type: string
+        custom: []
+      hash:
+        name: hash
+        description: ''
+        required: true
+        example: ducimus
+        type: string
+        custom: []
+    cleanUrlParameters:
+      id: sint
+      hash: ducimus
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlZ1Z3F0OStMMjZncTl2Tk1md1YxVFE9PSIsInZhbHVlIjoieHdVSmx0dmtWUEtzZFF0WVZwLys1U0gwbVVmbUlqaUc4SzI0RXZ0K1E2c3Y0V3crZDVuUFlVSnNZWldvRFc3V0RaSDNQU1BMcDdjR0hSL0pmMHB2aFRhb0ZnenZQUnZFemZZdEZ5VGZJbU1YY2NPQU82TWNtWTFjM0RFTjdhdkIiLCJtYWMiOiJhOTk1Nzk4ZjUzNWU1NWMwODdiZGEwMDk3N2ZlNzY2ZWVlMjg3ZGE5NjIyYmQzY2IyNDQyZTM0YWY4NDQ2MGM2IiwidGFnIjoiIn0%3D; expires=Fri, 05 May 2023 16:55:40 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -215,14 +241,14 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - PUT
-    uri: api/user/password
+      - POST
+    uri: api/email/verification-notification
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: "Update the user's password."
+      title: 'Send a new email verification notification.'
       description: ''
       authenticated: false
       custom: []
@@ -274,7 +300,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           access-control-allow-origin: '*'
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkpOT29KZ25oaWxiVkRZSmNibmNXdmc9PSIsInZhbHVlIjoiMi91M3g4YzVkZGpGQXNUNFJtSmlCNFgwazFZRDd0eEIrQVQ3MUtuNkdaazJJRWtBNitKTmFlQ3UwczNVNytDYzVZV2RtUnN3Z1lLYXhqOHM2OGpMdm9JMU9jR25mYTFVMUFBN0d2eE4wUFRDRjBXem1Wb2FCVHlpaW1FTWc3b0MiLCJtYWMiOiIxNjcyOTk4Yjc1ZTZjZGRmZDI4ZDcyMzk5ZTgyNGQ2OWRlNTc3ZmM2ZTBiOWQ0NDJhNWRiMDdmZDJjNGY3ZjY3IiwidGFnIjoiIn0%3D; expires=Wed, 26 Apr 2023 16:09:35 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6ImlGdmlyTEV4cjhJT3lvYVg5eHZzWHc9PSIsInZhbHVlIjoiMzBhQllrdWRQUzhZMzVaK2RRejgzcktzZ3BKSG5uTU9jbm1mbUU2VGJOYThQR0lXbzJnU0IwRmFvK1VSUWk4Y1RJa3JEaFpUWTZrZHNEd3JURU02THZGWElGV1dyNTFQVHY2QlFQYWtWQUxFWCt4cGYvTk1zN0UraDVuTlF4RGsiLCJtYWMiOiI2OGI3N2ZjMWRkYzlkYTE2MWViMzdkYzJlMTlkMGQ2ZDU4ZDZhYmVjZWMwNzU3ZjM0ZDAyNDQ3YWEwMmVjODA0IiwidGFnIjoiIn0%3D; expires=Wed, 26 Apr 2023 16:09:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          set-cookie: 'laravel_session=eyJpdiI6ImpMaXJhdmc0cWxuODBkdGVSNEJrL3c9PSIsInZhbHVlIjoiVXBIektmMlpOSHVTS3BpMzIrTUlZUXBuNTZ3dTk3Y0JDSVlmaXN2RWdOQkIvVTJYdHI0ODNHTHFEL1pxS0pLK3h6RGl1VzlCczZzdVhuU29iYWFWTS9WdWl3bEVLL0xibkJNbm5obEQ4RmdGb2RRZHFNQ0UzTUVTdWVuMkVwRHQiLCJtYWMiOiJiMWE2MTRmMDMxZGRiMTAxYzcxN2Q4MWIxODZkMGY3YzNhNjlkNTUwNzc1MWI0MjJjN2QwZjc4ZTgyOWMzOTU2IiwidGFnIjoiIn0%3D; expires=Fri, 05 May 2023 16:55:40 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []

@@ -26,19 +26,19 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: ab
+                  example: dolor
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: morton62@example.net
+                  example: bradtke.verna@example.net
                 password:
                   type: string
                   description: 'Must be at least 8 characters.'
-                  example: PZYQ7mM
+                  example: 'H*1Vw[R(ot;0t>'
                 password_confirm:
                   type: string
                   description: 'The value and <code>password</code> must match.'
-                  example: et
+                  example: dignissimos
               required:
                 - name
                 - email
@@ -64,11 +64,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: schaden.athena@example.com
+                  example: dcarter@example.com
                 password:
                   type: string
                   description: ''
-                  example: nam
+                  example: consequatur
               required:
                 - email
                 - password
@@ -83,22 +83,22 @@ paths:
           in: query
           name: per_page
           description: 'Size per page. Defaults to 15.'
-          example: 18
+          example: 5
           required: false
           schema:
             type: integer
             description: 'Size per page. Defaults to 15.'
-            example: 18
+            example: 5
         -
           in: query
           name: page
           description: 'Page to view.'
-          example: 18
+          example: 8
           required: false
           schema:
             type: integer
             description: 'Page to view.'
-            example: 18
+            example: 8
       responses:
         200:
           description: ''
@@ -111,15 +111,15 @@ paths:
                   links:
                     first: 'http://localhost/api/candy?page=1'
                     last: 'http://localhost/api/candy?page=1'
-                    prev: 'http://localhost/api/candy?page=17'
+                    prev: 'http://localhost/api/candy?page=7'
                     next: null
                   meta:
-                    current_page: 18
+                    current_page: 8
                     from: null
                     last_page: 1
                     links:
                       -
-                        url: 'http://localhost/api/candy?page=17'
+                        url: 'http://localhost/api/candy?page=7'
                         label: '&laquo; Previous'
                         active: false
                       -
@@ -131,9 +131,9 @@ paths:
                         label: 'Next &raquo;'
                         active: false
                     path: 'http://localhost/api/candy'
-                    per_page: 18
+                    per_page: 5
                     to: null
-                    total: 2
+                    total: 3
                 properties:
                   data:
                     type: array
@@ -149,7 +149,7 @@ paths:
                         example: 'http://localhost/api/candy?page=1'
                       prev:
                         type: string
-                        example: 'http://localhost/api/candy?page=17'
+                        example: 'http://localhost/api/candy?page=7'
                       next:
                         type: string
                         example: null
@@ -158,7 +158,7 @@ paths:
                     properties:
                       current_page:
                         type: integer
-                        example: 18
+                        example: 8
                       from:
                         type: string
                         example: null
@@ -169,7 +169,7 @@ paths:
                         type: array
                         example:
                           -
-                            url: 'http://localhost/api/candy?page=17'
+                            url: 'http://localhost/api/candy?page=7'
                             label: '&laquo; Previous'
                             active: false
                           -
@@ -185,7 +185,7 @@ paths:
                           properties:
                             url:
                               type: string
-                              example: 'http://localhost/api/candy?page=17'
+                              example: 'http://localhost/api/candy?page=7'
                             label:
                               type: string
                               example: '&laquo; Previous'
@@ -197,13 +197,13 @@ paths:
                         example: 'http://localhost/api/candy'
                       per_page:
                         type: integer
-                        example: 18
+                        example: 5
                       to:
                         type: string
                         example: null
                       total:
                         type: integer
-                        example: 2
+                        example: 3
       tags:
         - 'Candy Managent'
       security: []
@@ -225,11 +225,11 @@ paths:
                 candy_name:
                   type: string
                   description: ''
-                  example: enim
+                  example: corporis
                 amount:
                   type: integer
                   description: ''
-                  example: 6
+                  example: 1
               required:
                 - candy_name
                 - amount
@@ -294,11 +294,11 @@ paths:
                 candy_name:
                   type: string
                   description: ''
-                  example: voluptates
+                  example: cumque
                 amount:
                   type: integer
                   description: ''
-                  example: 2
+                  example: 10
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -314,7 +314,7 @@ paths:
         in: path
         name: id
         description: 'Candy ID'
-        example: 3
+        example: 14
         required: true
         schema:
           type: integer
@@ -337,11 +337,11 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: lori.morar@example.com
+                  example: buckridge.monty@example.org
                 password:
                   type: string
                   description: ''
-                  example: 'sUY2!&<'
+                  example: 'I)NX#8/bum}'
               required:
                 - email
                 - password
@@ -385,11 +385,11 @@ paths:
                 token:
                   type: string
                   description: ''
-                  example: eius
+                  example: et
                 password:
                   type: string
                   description: ''
-                  example: porro
+                  example: enim
               required:
                 - token
                 - password
@@ -404,20 +404,49 @@ paths:
       tags:
         - Endpoints
       security: []
-  /api/user/profile-information:
-    put:
-      summary: "Update the user's profile information."
-      operationId: updateTheUsersProfileInformation
+  '/api/email/verify/{id}/{hash}':
+    get:
+      summary: "Mark the authenticated user's email address as verified."
+      operationId: markTheAuthenticatedUsersEmailAddressAsVerified
       description: ''
       parameters: []
-      responses: {  }
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
       tags:
         - Endpoints
       security: []
-  /api/user/password:
-    put:
-      summary: "Update the user's password."
-      operationId: updateTheUsersPassword
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the verify.'
+        example: sint
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: hash
+        description: ''
+        example: ducimus
+        required: true
+        schema:
+          type: string
+  /api/email/verification-notification:
+    post:
+      summary: 'Send a new email verification notification.'
+      operationId: sendANewEmailVerificationNotification
       description: ''
       parameters: []
       responses: {  }
@@ -456,13 +485,278 @@ paths:
       tags:
         - Endpoints
       security: []
+  /api/ingredient:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: 'Get a list of ingredients.'
+      parameters:
+        -
+          in: query
+          name: per_page
+          description: 'Size per page. Defaults to 15.'
+          example: 2
+          required: false
+          schema:
+            type: integer
+            description: 'Size per page. Defaults to 15.'
+            example: 2
+        -
+          in: query
+          name: page
+          description: 'Page to view.'
+          example: 19
+          required: false
+          schema:
+            type: integer
+            description: 'Page to view.'
+            example: 19
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  links:
+                    first: 'http://localhost/api/ingredient?page=1'
+                    last: 'http://localhost/api/ingredient?page=1'
+                    prev: 'http://localhost/api/ingredient?page=18'
+                    next: null
+                  meta:
+                    current_page: 19
+                    from: null
+                    last_page: 1
+                    links:
+                      -
+                        url: 'http://localhost/api/ingredient?page=18'
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/ingredient?page=1'
+                        label: '1'
+                        active: false
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost/api/ingredient'
+                    per_page: 2
+                    to: null
+                    total: 1
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://localhost/api/ingredient?page=1'
+                      last:
+                        type: string
+                        example: 'http://localhost/api/ingredient?page=1'
+                      prev:
+                        type: string
+                        example: 'http://localhost/api/ingredient?page=18'
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 19
+                      from:
+                        type: string
+                        example: null
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: 'http://localhost/api/ingredient?page=18'
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://localhost/api/ingredient?page=1'
+                            label: '1'
+                            active: false
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: 'http://localhost/api/ingredient?page=18'
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://localhost/api/ingredient'
+                      per_page:
+                        type: integer
+                        example: 2
+                      to:
+                        type: string
+                        example: null
+                      total:
+                        type: integer
+                        example: 1
+      tags:
+        - 'Ingredient Managent'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Ingredient Managent'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ing_name:
+                  type: string
+                  description: ''
+                  example: ab
+                amount:
+                  type: string
+                  description: ''
+                  example: vitae
+                cost:
+                  type: string
+                  description: ''
+                  example: quae
+              required:
+                - ing_name
+                - amount
+                - cost
+      security: []
+  '/api/ingredient/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    ingredient: açucar
+                    amount: 1500
+                    cost: 11.78
+                    created_at: '2023-05-05T14:31:12.000000Z'
+                    updated_at: '2023-05-05T14:45:33.000000Z'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      ingredient:
+                        type: string
+                        example: açucar
+                      amount:
+                        type: integer
+                        example: 1500
+                      cost:
+                        type: number
+                        example: 11.78
+                      created_at:
+                        type: string
+                        example: '2023-05-05T14:31:12.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-05-05T14:45:33.000000Z'
+      tags:
+        - 'Ingredient Managent'
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Ingredient Managent'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ing_name:
+                  type: string
+                  description: ''
+                  example: omnis
+                amount:
+                  type: string
+                  description: ''
+                  example: temporibus
+                cost:
+                  type: string
+                  description: ''
+                  example: veritatis
+              required:
+                - ing_name
+                - amount
+                - cost
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Ingredient Managent'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the ingredient.'
+        example: 1
+        required: true
+        schema:
+          type: integer
 tags:
   -
     name: 'Auth Managent'
     description: "\nAPIs to manage the Auth resource"
   -
     name: 'Candy Managent'
-    description: "\nAPIs to manage the cnady resource"
+    description: "\nAPIs to manage the candy resource"
   -
     name: Endpoints
     description: ''
+  -
+    name: 'Ingredient Managent'
+    description: "\nAPIs to manage the Ingredient resource"

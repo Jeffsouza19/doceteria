@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 /**
  * @group Candy Managent
  *
- * APIs to manage the cnady resource
+ * APIs to manage the candy resource
  */
 
 class CandyController extends Controller
@@ -33,9 +33,6 @@ class CandyController extends Controller
         $per_page = isset($per_page['per_page'])? $per_page['per_page'] :'';
         $candies = $srv_candy->getAll($per_page);
 
-        if(!$candies){
-            return new JsonResponse(['data' => 'Não existe doces cadastrados'], 200);
-        }
 
         return CandyResource::collection($candies);
     }
@@ -67,6 +64,11 @@ class CandyController extends Controller
     public function show(string $id, CandyService $srv_candy)
     {
         $candy = $srv_candy->getOne($id);
+
+        if(!$candy){
+            return new JsonResponse(['error' => 'Produto não cadastrado'], 200);
+        }
+
         return new CandyResource($candy);
     }
 
@@ -75,9 +77,7 @@ class CandyController extends Controller
      */
     public function update(CandyRequest $request, string $id, CandyService $srv_candy)
     {
-        $srv_candy->update($id, $request->all());
-
-        $candy = $srv_candy->getOne($id);
+        $candy = $srv_candy->update($id, $request->all());
 
         return new CandyResource($candy);
     }

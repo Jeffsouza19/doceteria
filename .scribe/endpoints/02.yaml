@@ -1,20 +1,79 @@
-name: 'Auth Managent'
+name: 'Ingredient Managent'
 description: |-
 
-  APIs to manage the Auth resource
+  APIs to manage the Ingredient resource
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: api/auth/register
+      - GET
+    uri: api/ingredient
     metadata:
-      groupName: 'Auth Managent'
+      groupName: 'Ingredient Managent'
       groupDescription: |-
 
-        APIs to manage the Auth resource
+        APIs to manage the Ingredient resource
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Display a listing of the resource.'
+      description: 'Get a list of ingredients.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page. Defaults to 15.'
+        required: false
+        example: 2
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'Page to view.'
+        required: false
+        example: 19
+        type: integer
+        custom: []
+    cleanQueryParameters:
+      per_page: 2
+      page: 19
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[],"links":{"first":"http:\/\/localhost\/api\/ingredient?page=1","last":"http:\/\/localhost\/api\/ingredient?page=1","prev":"http:\/\/localhost\/api\/ingredient?page=18","next":null},"meta":{"current_page":19,"from":null,"last_page":1,"links":[{"url":"http:\/\/localhost\/api\/ingredient?page=18","label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost\/api\/ingredient?page=1","label":"1","active":false},{"url":null,"label":"Next &raquo;","active":false}],"path":"http:\/\/localhost\/api\/ingredient","per_page":2,"to":null,"total":1}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/ingredient
+    metadata:
+      groupName: 'Ingredient Managent'
+      groupDescription: |-
+
+        APIs to manage the Ingredient resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
       description: ''
       authenticated: false
       custom: []
@@ -26,39 +85,31 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
+      ing_name:
+        name: ing_name
         description: ''
         required: true
         example: ab
         type: string
         custom: []
-      email:
-        name: email
-        description: 'Must be a valid email address.'
+      amount:
+        name: amount
+        description: ''
         required: true
-        example: morton62@example.net
+        example: vitae
         type: string
         custom: []
-      password:
-        name: password
-        description: 'Must be at least 8 characters.'
+      cost:
+        name: cost
+        description: ''
         required: true
-        example: PZYQ7mM
-        type: string
-        custom: []
-      password_confirm:
-        name: password_confirm
-        description: 'The value and <code>password</code> must match.'
-        required: true
-        example: et
+        example: quae
         type: string
         custom: []
     cleanBodyParameters:
-      name: ab
-      email: morton62@example.net
-      password: PZYQ7mM
-      password_confirm: et
+      ing_name: ab
+      amount: vitae
+      cost: quae
     fileParameters: []
     responses: []
     responseFields: []
@@ -69,44 +120,151 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - POST
-    uri: api/auth/signin
+      - GET
+    uri: 'api/ingredient/{id}'
     metadata:
-      groupName: 'Auth Managent'
+      groupName: 'Ingredient Managent'
       groupDescription: |-
 
-        APIs to manage the Auth resource
+        APIs to manage the Ingredient resource
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Display the specified resource.'
       description: ''
       authenticated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the ingredient.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":1,"ingredient":"a\u00e7ucar","amount":1500,"cost":11.78,"created_at":"2023-05-05T14:31:12.000000Z","updated_at":"2023-05-05T14:45:33.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/ingredient/{id}'
+    metadata:
+      groupName: 'Ingredient Managent'
+      groupDescription: |-
+
+        APIs to manage the Ingredient resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the ingredient.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      email:
-        name: email
-        description: 'Must be a valid email address.'
-        required: true
-        example: schaden.athena@example.com
-        type: string
-        custom: []
-      password:
-        name: password
+      ing_name:
+        name: ing_name
         description: ''
         required: true
-        example: nam
+        example: omnis
+        type: string
+        custom: []
+      amount:
+        name: amount
+        description: ''
+        required: true
+        example: temporibus
+        type: string
+        custom: []
+      cost:
+        name: cost
+        description: ''
+        required: true
+        example: veritatis
         type: string
         custom: []
     cleanBodyParameters:
-      email: schaden.athena@example.com
-      password: nam
+      ing_name: omnis
+      amount: temporibus
+      cost: veritatis
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/ingredient/{id}'
+    metadata:
+      groupName: 'Ingredient Managent'
+      groupDescription: |-
+
+        APIs to manage the Ingredient resource
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the ingredient.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses: []
     responseFields: []

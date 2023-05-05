@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CandyController;
+use App\Http\Controllers\Admin\IngredientController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::controller(CandyController::class)->prefix('candy')->group(function(){
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/{id}', 'show');
+    Route::put('/{id}', 'update');
+    Route::delete('/{id}', 'destroy');
+});
+
+Route::controller(IngredientController::class)->prefix('ingredient')->group(function(){
     Route::get('/', 'index');
     Route::post('/', 'store');
     Route::get('/{id}', 'show');

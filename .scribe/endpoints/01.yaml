@@ -1,7 +1,7 @@
 name: 'Candy Managent'
 description: |-
 
-  APIs to manage the cnady resource
+  APIs to manage the candy resource
 endpoints:
   -
     httpMethods:
@@ -11,7 +11,7 @@ endpoints:
       groupName: 'Candy Managent'
       groupDescription: |-
 
-        APIs to manage the cnady resource
+        APIs to manage the candy resource
       subgroup: ''
       subgroupDescription: ''
       title: 'Display a listing of candies.'
@@ -28,26 +28,26 @@ endpoints:
         name: per_page
         description: 'Size per page. Defaults to 15.'
         required: false
-        example: 18
+        example: 5
         type: integer
         custom: []
       page:
         name: page
         description: 'Page to view.'
         required: false
-        example: 18
+        example: 8
         type: integer
         custom: []
     cleanQueryParameters:
-      per_page: 18
-      page: 18
+      per_page: 5
+      page: 8
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
-        content: '{"data":[],"links":{"first":"http:\/\/localhost\/api\/candy?page=1","last":"http:\/\/localhost\/api\/candy?page=1","prev":"http:\/\/localhost\/api\/candy?page=17","next":null},"meta":{"current_page":18,"from":null,"last_page":1,"links":[{"url":"http:\/\/localhost\/api\/candy?page=17","label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost\/api\/candy?page=1","label":"1","active":false},{"url":null,"label":"Next &raquo;","active":false}],"path":"http:\/\/localhost\/api\/candy","per_page":18,"to":null,"total":2}}'
+        content: '{"data":[],"links":{"first":"http:\/\/localhost\/api\/candy?page=1","last":"http:\/\/localhost\/api\/candy?page=1","prev":"http:\/\/localhost\/api\/candy?page=7","next":null},"meta":{"current_page":8,"from":null,"last_page":1,"links":[{"url":"http:\/\/localhost\/api\/candy?page=7","label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost\/api\/candy?page=1","label":"1","active":false},{"url":null,"label":"Next &raquo;","active":false}],"path":"http:\/\/localhost\/api\/candy","per_page":5,"to":null,"total":3}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -70,7 +70,7 @@ endpoints:
       groupName: 'Candy Managent'
       groupDescription: |-
 
-        APIs to manage the cnady resource
+        APIs to manage the candy resource
       subgroup: ''
       subgroupDescription: ''
       title: 'Store a newly created resource in storage.'
@@ -89,19 +89,19 @@ endpoints:
         name: candy_name
         description: ''
         required: true
-        example: enim
+        example: corporis
         type: string
         custom: []
       amount:
         name: amount
         description: ''
         required: true
-        example: 6
+        example: 1
         type: integer
         custom: []
     cleanBodyParameters:
-      candy_name: enim
-      amount: 6
+      candy_name: corporis
+      amount: 1
     fileParameters: []
     responses: []
     responseFields: []
@@ -118,7 +118,7 @@ endpoints:
       groupName: 'Candy Managent'
       groupDescription: |-
 
-        APIs to manage the cnady resource
+        APIs to manage the candy resource
       subgroup: ''
       subgroupDescription: ''
       title: 'Display the specified Candy.'
@@ -133,11 +133,11 @@ endpoints:
         name: id
         description: 'Candy ID'
         required: true
-        example: 3
+        example: 14
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 3
+      id: 14
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -164,7 +164,7 @@ endpoints:
       groupName: 'Candy Managent'
       groupDescription: |-
 
-        APIs to manage the cnady resource
+        APIs to manage the candy resource
       subgroup: ''
       subgroupDescription: ''
       title: 'Update the specified resource in storage.'
@@ -191,19 +191,19 @@ endpoints:
         name: candy_name
         description: ''
         required: false
-        example: voluptates
+        example: cumque
         type: string
         custom: []
       amount:
         name: amount
         description: ''
         required: false
-        example: 2
+        example: 10
         type: integer
         custom: []
     cleanBodyParameters:
-      candy_name: voluptates
-      amount: 2
+      candy_name: cumque
+      amount: 10
     fileParameters: []
     responses: []
     responseFields: []
@@ -220,7 +220,7 @@ endpoints:
       groupName: 'Candy Managent'
       groupDescription: |-
 
-        APIs to manage the cnady resource
+        APIs to manage the candy resource
       subgroup: ''
       subgroupDescription: ''
       title: 'Remove the specified resource from storage.'
