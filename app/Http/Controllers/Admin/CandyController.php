@@ -90,6 +90,7 @@ class CandyController extends Controller
     {
         $srv_candy->destroy($id);
 
+
         return new JsonResponse(['success' => 'sucessssso'], 200);
     }
 }
